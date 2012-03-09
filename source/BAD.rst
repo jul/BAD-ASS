@@ -12,7 +12,7 @@ Conceptual Static Model
 ***********************
 
 
-I have made countless technical interviews where CTO did not know their conceptual models but already knew they'd rely on stored procedure in their favourite SGBDR.
+I have made countless technical interviews where CTO did not know their conceptual models but already knew they'd rely on stored procedure in their favourite RDBMS.
  
  Early optimization is the root of all evil.
 
