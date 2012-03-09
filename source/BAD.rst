@@ -14,11 +14,11 @@ Conceptual Static Model
 
 I have made countless technical interviews where CTO did not know their conceptual models but already knew they'd rely on stored procedure in their favourite SGBDR.
  
- Early optmization is the root of all evil.
+ Early optimization is the root of all evil.
 
 Conception bugs are the most costly. And physical model are no replacement for conceptual models. 
 
-Developers have one craft with its jargon. They will mostly make an application for non developers with an established craft, with its own convetions. Conceptual Model is not only about abstraction, it is also about practical understanding, each terms should be defined exactly and if refering to technical, legal or accounting the norms should be explicitely quoted and made available so that developers can check the consistency when in doubt. 
+Developers have one craft with its jargon. They will mostly make an application for non developers with an established craft, with its own conventions. Conceptual Model is not only about abstraction, it is also about practical understanding, each terms should be defined exactly and if refering to technical, legal or accounting the norms should be explicitely quoted and made available so that developers can check the consistency when in doubt. 
 
 For instance if a database is about printing and their are pages and RV and costs. It is always a good idea to define what a page is, that a RV is a *recto verso*, and if there is a cost in an usual measure it is always nice to tell the unit and the precision needed. 
 
@@ -36,7 +36,7 @@ Model Checklist
 * units ; 
 * an estimation of the cost of transaction (some data maybe considered not vital like a comment on a post and making them transactionnal does not worths the trouble, others like a withdrawal on a bank account maybe considered as vital) ;
 * are data polymorphic (a product should have a price, a description, and a serial number, but it may differs in additionnal data (colour, size, unit, picture, energy consumption) amongst different categories) ? 
-* the previous is synonym of is their a soft model ? 
+* the previous is synonym of is there a soft model ? 
 * do we use in our model the **exact** terms that are used contextually in the business we code for (price is not exact enough in ecommerce, it is usually a pricing without taxes included, and or discount) ? 
 * does it states any implementation ? 
 
@@ -46,9 +46,9 @@ Model inspection
 
 There is worst than making mistakes, it is doing nothing. If you are a doer, this first Conceptual Model might be full of stupid mistakes. 
 
-Well, let's live with it, people with ideas never commit themselves in the filfthy  mud of realisation, that's the reason they never fail.
+Well, let's live with it, people with ideas never commit themselves in the filthy  mud of realisation, that's the reason they never fail.
 
-First of all, if you have an implementation or a design specification, something is wrong, you are one step ahead in the physical model. It means you did not noticed you had an expert in your meeting, your work is ruined, you have to redo it from scratch. 
+First of all, if you have an implementation or a design specification, something is wrong, you are one step ahead in the physical model. It means you didn't not notice that you had an expert in your meeting, your work is ruined, you have to redo it from scratch. 
 
 
 Then it is time for pre-shooting bugs. 
@@ -69,8 +69,8 @@ Now that is done, let's fire in the hole :
 * **Check with an end user** that he understands your model. 
 * beware of exponential, when **n** items are connected to one another they have *n x ( n - 1 )*  connections ; 
 
- Complicated is easier to do than simple, and most people confuse an obscure design  with a brillant one. 
- Complex is not complicated : complex is having a lot of simple unit interacting with each others.
+ Complicated is easier to do than simple, and most people confuse an obscure design with a brillant one. 
+ Complex is not complicated : complex is having a lot of simple units interacting with each others.
  This is the definition of a complex system, hence something potentially chaotic.
 
 
@@ -85,7 +85,7 @@ I did not speak of UML, or conventions, because, it is like style in code. You h
 
 
  I don't think we should emphase on coding convention when people submit patches.
- It demotivates them, when they propose substential patches, and we can still help them afterward on the coding convebtion.
+ It demotivates them, when they propose substential patches, and we can still help them afterward on the coding convention.
 
    -- seen on python-dev
 
@@ -107,12 +107,12 @@ KISS : How not to guess
 * if you use international standard give the exact reference to the norm. 
 
  s/([^@]+)@([\.]+.[\w])/ does not validate an email. 
- only strings compliant to RFC 2822 are. 
+ only strings compliant with the RFC 5322 are. 
 
 * (local) Time and Dates, intervals are the biggest tar pits in CS. Be very careful for this datatype, and on the convention (if an application is worldwide, store time in UTC).
 
-* use internally ISO date format, since you sort lexicographically the date ;
-* when you need a hash dont say you are gonna use **md5**, this just proves you are a plain idiot. You need a hashing function.
+* internally use the ISO 8601 date format, since you sort lexicographically the date ;
+* when you need a hash dont say you are gonna use **MD5**, this just proves you are a plain idiot (MD5 is broken, for many purpose, and has been for years). You need a hashing function.
 * Use adapters to change from end user input format to internal representation;
 * regexp validation is good since web is strings and it is portable between a lot of languages, and it stores very well in a cross plateform format known as JSON;
 * if using regexp, dont dare recode your own home brewed regexps for Credit Card, IETF definitions, date. Use libraries unless you dont fear a psychopath developper know your personnal address. 
@@ -163,7 +163,7 @@ Authorization
     What defines an entity ? What are its profile (groups) and which permissions are related to the groups ? 
 
 Accounting
-    What authentified entity accessed what, when ? When did they accessed the system ? 
+    What authenticated entity accessed what, when ? When did they accessed the system ? 
 
 Authentication
 --------------
@@ -221,7 +221,7 @@ One of the most important scenario to describe is :
 * user logout
 * user cannot see private data. 
 
-These scenarii should be made by the end user. These are what you will agree with your customer on legitim behaviour. The customer doesn't care of how much code coverage your unit tests covers. It cares about getting things done. 
+These scenarii should be made by the end user. These are what you will agree with your customer on legitimate behaviour. The customer doesn't care of how much code coverage your unit tests covers. It cares about getting things done. 
 
 **This is functionnal testing, and should be what your agreed what the software should do, it should also include functionnal domain (speed, acceptable error rates, SLA...). This ensure your software is conform to what your customer is ready to pay. Humans being are acceptable yet expensive bots usable for this tasks.** 
 
@@ -249,13 +249,13 @@ Normally, your job is one of a very well paid secretary : you type the name, the
 
 One page per realm, mostly one file for AAA, try to group objects related to one another. If you have avoided cyclic references, you normally have disjoints hierarchies  of object. 
 
-ORM **abstracts interactions to database** as a results, you do not need to know for which SGBDR you are coding for. Since ORM had great successes with SGBDR noSQL ORM like pymongodb have almost the same interface. 
+ORM **abstracts interactions to database** as a results, you do not need to know for which RDBMS you are coding for. Since ORM had great successes with RDBMS, NoSQL ORM like pymongodb have almost the same interface. 
 
 .. warning:
     If it is not boring, your conceptual model is wrong. If you are a developper, begin to store your emails because you have a good probabity to be held responsible for the lack of competence of your hierarchy. Dont question your hierarchy too obviously, but be sure there are written trace of your questions. In worst case, remember only smart people know they are not smart, and therefore dare asks questions. In doubt : **don't guess**. You may even earn respect by asking smart questions. 
 
 .. warning:
-   If you modeled the DB and have experienced implementing it, developpers not mastering basic data type (especially strings, decimal, floats, and date) and there representations  are legions they can misinterpret your model, and introduce very bad bugs and security holes now. Be sure your developper understand. You can assess if your model is still too complicated if you have questions that needs more 5 minutes of reflexion, and you can assess if a developper is a complete moron that needs to be fired if he does jump on all usual anti design pattern. If a question if smart, say thanks, it has avoided you a conception bug. 
+   If you modeled the DB and have experienced implementing it, developpers not mastering basic data type (especially strings, decimal, floats, and date) and there representations are legions they can misinterpret your model, and introduce very bad bugs and security holes now. Be sure your developper understand. You can assess if your model is still too complicated if you have questions that needs more 5 minutes of reflexion, and you can assess if a developper is a complete moron that needs to be fired if he does jump on all usual design antipattern. If a question if smart, say thanks, it has avoided you a conception bug. 
 
 
 Authentication
@@ -268,16 +268,16 @@ Here are some of your choices :
 * LDAP, AD, CAS, RADIUS, DIAMETER, Kerberos ?
 * System mechanism like PAM ? 
 
-Well, a **good** langage is there to abstract the Operating System and the underlying mechanism. A good AAA framework should have one line in a config file to choose the good mechanism. 
+Well, a **good** langage is there to abstract the Operating System and the underlying mechanism. A good AAA framework should have one line in a config file to choose the right mechanism. 
 
 Some ideas : 
 
 Web authentication
-    * Strong and secure but hard to use is pkcs12 SSL client certificate ;
+    * Strong and secure but hard to use is to use TLS client certificate ;
     * login password grant a cookie related to a unique ID related to a  session with a time to live. Less secure, easier to use ;
     * Authenticating proxies (CAS)  used in some universities ;
     * Web server authentication mechanism (realm based) (supports RADIUS, LDAP ...) ;
-    * openID, facebook connect ... 
+    * OpenID, facebook connect ... 
     * PKIs mechanism  (ssh (like on github), GPG ...) 
 
 GUI authentication 
@@ -296,7 +296,7 @@ Other authentication
 Biometry is **not** acceptable as an authentication mechanism : 
 
 * it is measure based, therefore error prone ; 
-* you leak almost all your biometric data without possibly preventing it : **your biological measure are no secrets**. It is not eligible as a secret for an authentication mechanism.
+* you leak almost all your biometric data without possibly preventing it : **your biological measure are no secrets, nor are they revokable**. It is not eligible as a secret for an authentication mechanism.
 
 Modern Lightweigth web frameworks are based on layers of decorators. 
 
@@ -316,7 +316,7 @@ It is pretty straightforward.
 one format to rule them all
 ---------------------------
 
-JSON has thanks to the savant idiocy of java and PHP devvelopers becomes the de facto standard. 
+JSON has thanks to the savant idiocy of Java and PHP developers becomes the de facto standard. 
 
 It is readable in almost all langage, frontend and backend identically.
 
@@ -344,7 +344,7 @@ Then, you **MUST** decide a consistent policy of error multiplexing and the one 
 Logging
 -------
 
-python, Perl, ruby have excellent abstraction classes for logging. Unices have syslog daemon that may prove interesting because your security alerts should be sent on a machine different than the ones potentially attacked or failing. 
+Python, Perl, Ruby have excellent abstraction classes for logging. Unices have syslog daemon that may prove interesting because your security alerts should be sent on a machine different than the ones potentially attacked or failing. 
 
 If you don't understand this, you are a PHP developper thinking a developper should not care about how the system work. I can lend you a rope.
 
@@ -384,7 +384,7 @@ CSV, PDF, Excel, OpenOffice
 
 CSV is a standard, dont invent your own. 
 
-Tabular data are easily converted server side in CSV, Excel or PDF. There are a lot of libraries helping you in this tasks. If you want a *nice* output, you will probably have more work than you imagine. 
+Tabular data are easily converted server side in CSV, Excel or PDF. There are a lot of libraries helping you in these tasks. If you want a *nice* output, you will probably have more work than you imagine. 
 
 OpenOffice can be generated both server side and client side. It is always best to let the customer's CPU burn instead of your servers. 
 
@@ -422,7 +422,7 @@ Dont fire and forget. Integrators might find bugs or inconsitencies. It is not t
 Standalone
 ----------
 
-You need no web server. You need an ORM that will be included 
+You need no web server. You need an ORM that will be included.
 
 
 
